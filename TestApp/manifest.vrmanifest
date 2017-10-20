@@ -1,0 +1,19 @@
+{
+	"source" : "builtin",
+	"applications" : [{
+		"app_key" : "jstefanelli.enginetest",
+		"launch_type" : "binary",
+		"binary_path_windows" : "TestApp.exe",
+
+		"strings" : {
+			"default": {
+				"name": "JEngine Test Application",
+				"description": "TestApp by JStefanelli"
+			}, 
+			"en-US" : {
+				"name": "JEngine Test Application",
+				"description": "TestApp by JStefanelli"
+			}
+		}
+	}]
+}

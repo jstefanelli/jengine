@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Formats\Obj\ObjParser.cs~RF11db625a.TMP" />
+    <None Remove="Program.cs~RF11eea85f.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\libjmodel\libjmodel.csproj" />
+  </ItemGroup>
+
+</Project>

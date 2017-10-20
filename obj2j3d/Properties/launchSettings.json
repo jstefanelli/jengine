@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "obj2j3d": {
+      "commandName": "Project",
+      "commandLineArgs": "-i F:\\HD\\Archive\\3D\\test.obj -o F:\\HD\\Archive\\3D\\test.j3d"
+    }
+  }
+}

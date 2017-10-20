@@ -1,16 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>3a63f049-726f-4308-b4e6-01df8af4b607</ProjectGuid>
+    <ProjectGuid>{3A63F049-726F-4308-B4E6-01DF8AF4B607}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>jengine</RootNamespace>
     <AssemblyName>jengine</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,25 +32,133 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="BulletSharp, Version=2.83.7.1, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BulletSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=2.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.2.0.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Cameras\FixedCamera.cs" />
+    <Compile Include="Control\Keyboard\IKeyboardControlReceiver.cs" />
+    <Compile Include="Control\VR\IOpenVRControllerReceiver.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="Logic\IScene.cs" />
+    <Compile Include="Physics\Interop\GameObject.cs" />
+    <Compile Include="Physics\Interop\Interop.cs" />
+    <Compile Include="Physics\World.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Render\GL3\GL3Render.cs" />
+    <Compile Include="Render\GL3\RenderScriptFactory.cs" />
+    <Compile Include="Render\GL3\Scripts\FrameBufferDrawable.cs" />
+    <Compile Include="Render\GL3\Scripts\ShadowMapScript.cs" />
+    <Compile Include="Render\GL3\Scripts\VRShadowMapRenderScript.cs" />
+    <Compile Include="Render\GL3\Scripts\VR\VRTempCamera.cs" />
+    <Compile Include="Render\GL3\ShaderFactory.cs" />
+    <Compile Include="Render\GL3\Shaders\MathUtils.cs" />
+    <Compile Include="Render\GL3\Shaders\PhongShader.cs" />
+    <Compile Include="Render\GL3\Shaders\ShaderUtils.cs" />
+    <Compile Include="Render\GL3\Shaders\ShadowMapShader.cs" />
+    <Compile Include="Render\GL3\Shaders\Simple2DTexturedShader.cs" />
+    <Compile Include="Render\GL3\Shaders\Simple3DShader.cs" />
+    <Compile Include="Render\GL3\Shapes\Cube.cs" />
+    <Compile Include="Render\GL3\Utils.cs" />
+    <Compile Include="Render\GL3\Wrappers\GenericFrameBuffer.cs" />
+    <Compile Include="Render\GL3\Wrappers\GLBuffer.cs" />
+    <Compile Include="Render\GL3\Wrappers\ShadowMapFrameBuffer.cs" />
+    <Compile Include="Render\GL3\Wrappers\Texture2D.cs" />
+    <Compile Include="Cameras\ICamera.cs" />
+    <Compile Include="Control\VR\opentk_interop.cs" />
+    <Compile Include="Control\VR\openvr_api.cs" />
+    <Compile Include="Render\GL3\Shapes\RenderModel.cs" />
+    <Compile Include="Render\IDrawable.cs" />
+    <Compile Include="Render\DrawableGroup.cs" />
+    <Compile Include="Render\IRender.cs" />
+    <Compile Include="Render\IShader.cs" />
+    <Compile Include="Render\IShaderFactory.cs" />
+    <Compile Include="Render\Material.cs" />
+    <Compile Include="Render\GL3\ShapeFactory.cs" />
+    <Compile Include="Render\Scripts\IRenderScript.cs" />
+    <Compile Include="Render\Scripts\IRenderScriptFactory.cs" />
+    <Compile Include="Render\GL3\Shapes\Mesh.cs" />
+    <Compile Include="Render\Shapes\VR\IVRTrackedDrawable.cs" />
+    <Compile Include="Render\Wrappers\IBuffer.cs" />
+    <Compile Include="Render\Shapes\IShapeFactory.cs" />
+    <Compile Include="Render\Wrappers\IFrameBuffer.cs" />
+    <Compile Include="Render\Wrappers\ITexture2D.cs" />
+    <Compile Include="Settings\SettingsManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DefaultAssets\Shaders\phongf.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DefaultAssets\Shaders\phongv.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DefaultAssets\Shaders\shadowMapf.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DefaultAssets\Shaders\shadowMapv.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DefaultAssets\Shaders\simple2DTexf.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DefaultAssets\Shaders\simple2DTexv.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DefaultAssets\Shaders\simple3Df.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="DefaultAssets\Shaders\simple3Dv.glsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="openvr_api.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libjmodel\libjmodel.csproj">
+      <Project>{6a3b543d-c042-4231-960d-06c9f1c2c45a}</Project>
+      <Name>libjmodel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>
