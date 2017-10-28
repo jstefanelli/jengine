@@ -146,6 +146,8 @@
     <None Include="DefaultAssets\Shaders\simple3Dv.glsl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="DefaultAssets\Shaders\ui2Dv.glsl" />
+    <None Include="DefaultAssets\Shaders\ui2Df.glsl" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -155,6 +157,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AmbitionUI\AmbitionUI.csproj">
+      <Project>{a2ade603-a65e-44f4-ada9-d98aebf6055a}</Project>
+      <Name>AmbitionUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\libjmodel\libjmodel.csproj">
       <Project>{6a3b543d-c042-4231-960d-06c9f1c2c45a}</Project>
       <Name>libjmodel</Name>
